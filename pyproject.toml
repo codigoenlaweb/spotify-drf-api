@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "spotify-drf-api"
+version = "0.1.0"
+description = "Aplicación que ayude a obtener una lista de álbumes, canciones y sus artistas (clone de Deezer)"
+authors = ["codigoenlaweb <codeenlaweb@gmail.com>"]
+readme = "README.md"
+packages = [{include = "spotify_drf_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+djangorestframework = "^3.14.0"
+django-environ = "^0.9.0"
+mysqlclient = "^2.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
