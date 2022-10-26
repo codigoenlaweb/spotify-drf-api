@@ -5,11 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin)
 from .managers import CustomAccountManager
 
-"""
-Model from UserModel
-"""
 
-
+# Create your models here.
 class User(AbstractBaseUser, PermissionsMixin):
     """
     User object.

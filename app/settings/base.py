@@ -30,6 +30,9 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'modules.users',
+    'modules.artist',
+    'modules.album',
+    'modules.track',
 ]
 
 THIRD_APPS = [
