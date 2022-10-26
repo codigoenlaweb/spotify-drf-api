@@ -6,8 +6,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/auth/', include('modules.users.urls')),
     path('api/artist/', include('modules.artist.urls')),
+    path('api/album/', include('modules.album.urls')),
 
-    # Optional UI:
+    # Swagger:
     path('api/swagger/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/swagger/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path('api/swagger/schema/', SpectacularAPIView.as_view(), name='schema'),

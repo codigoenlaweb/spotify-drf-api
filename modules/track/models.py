@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modules.album.models import Album
@@ -7,7 +8,7 @@ class Track(models.Model):
     """Object Album."""
 
     title = models.CharField(_('title'), max_length=250)
-    duration = models.DurationField(_("duration"), blank=True, default=0)
+    duration = models.DurationField(_("duration"), blank=True, default=timedelta(seconds=0))
     url_track = models.URLField(_("url track"), max_length=250,)
     album = models.ForeignKey(
         Album, verbose_name=_("artist"),

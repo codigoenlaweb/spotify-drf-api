@@ -10,7 +10,7 @@ from rest_framework.test import APIClient
 
 from modules.artist.models import Artist
 
-from modules.artist.serializers import ArtistSerializer
+from modules.artist.serializers import ArtistSerializer, ArtistDetailSerializer
 
 
 ARTIST_URL = reverse('artist:artist-list')
@@ -55,7 +55,7 @@ class PrivateArtistsApiTests(TestCase):
         res = self.client.get(ARTIST_URL)
 
         artist = Artist.objects.all().order_by('-id')
-        serializer = ArtistSerializer(artist, many=True)
+        serializer = ArtistDetailSerializer(artist, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
