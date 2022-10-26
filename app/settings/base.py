@@ -35,6 +35,7 @@ LOCAL_APPS = [
 THIRD_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -92,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -117,3 +119,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Auth user model config
 AUTH_USER_MODEL = 'users.User'
 
+# swagger (drf-spetacular)
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Spotify clon (DRF-API)',
+    'DESCRIPTION': 'Application that helps to obtain a list of albums, songs and their artists (Deezer clone). Detailed API documentation',
+    'VERSION': '1.0.0',
+    # 'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
