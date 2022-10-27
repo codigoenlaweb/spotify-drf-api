@@ -14,4 +14,5 @@ app_name = 'track'
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('search', views.SearchTrackView.as_view()),
 ]

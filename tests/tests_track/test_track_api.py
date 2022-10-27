@@ -108,7 +108,8 @@ class PrivateTracksApiTests(TestCase):
         payload = {
             "title": "title new",
             "duration": "200",
-            "album": album.id
+            "album": album.id,
+            "url_track": 'https://youtube.com'
         }
         res = self.client.post(TRACK_URL, payload, format='json')
 

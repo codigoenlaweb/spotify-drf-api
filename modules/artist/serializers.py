@@ -12,7 +12,7 @@ class TracksForArtistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Track
-        fields = ['id', 'title', 'duration', 'album']
+        fields = ['id', 'title', 'duration', 'album', 'url_track']
         read_only_fields = ['id']
 
 
