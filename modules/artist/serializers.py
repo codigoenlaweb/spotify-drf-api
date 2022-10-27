@@ -4,15 +4,26 @@ Serializers for artist APIs
 from rest_framework import serializers
 from .models import Artist
 from modules.album.models import Album
+from modules.track.models import Track
 
 
-class AlbumForArtistSerializer(serializers.ModelSerializer):
-    """Serializer for Artists."""
+class TracksForArtistSerializer(serializers.ModelSerializer):
+    """Serializer for Artists from Track."""
+
+    class Meta:
+        model = Track
+        fields = ['id', 'title', 'duration', 'album']
+        read_only_fields = ['id']
+
+
+class AlbumsForArtistSerializer(serializers.ModelSerializer):
+    """Serializer for Artists from Album."""
+    tracks = TracksForArtistSerializer(many=True)
 
     class Meta:
         model = Album
-        fields = ['id', 'title', 'duration', 'artist']
-        read_only_fields = ['id', 'duration']
+        fields = ['id', 'title', 'duration', 'tracks']
+        read_only_fields = ['id', 'duration', 'tracks']
 
 
 class ArtistSerializer(serializers.ModelSerializer):
@@ -26,7 +37,7 @@ class ArtistSerializer(serializers.ModelSerializer):
 
 class ArtistDetailSerializer(serializers.ModelSerializer):
     """Serializer for Artists."""
-    albums = AlbumForArtistSerializer(many=True)
+    albums = AlbumsForArtistSerializer(many=True)
 
     class Meta:
         model = Artist

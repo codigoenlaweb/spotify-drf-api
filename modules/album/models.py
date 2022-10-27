@@ -8,7 +8,8 @@ class Album(models.Model):
     """Object Album."""
 
     title = models.CharField(_('title'), max_length=250)
-    duration = models.DurationField(_("duration"), blank=True, default=timedelta(seconds=0))
+    duration = models.IntegerField(
+        _("duration"), blank=True, default=0, help_text=_("works in seconds"))  # seconds
     artist = models.ForeignKey(
         Artist, verbose_name=_("artist"),
         on_delete=models.CASCADE,
@@ -24,7 +25,7 @@ class Album(models.Model):
 
     def __str__(self):
         """Unicode representation of Album."""
-        pass
+        return f'{self.title}'
 
     # def save(self):
     #     """Save method for Album."""

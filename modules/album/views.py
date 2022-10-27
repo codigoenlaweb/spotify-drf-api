@@ -1,6 +1,7 @@
 """
 Views for the album APIs
 """
+from django.shortcuts import get_object_or_404
 from rest_framework import (
     viewsets,
     mixins,
@@ -26,4 +27,10 @@ class AlbumViewSet(viewsets.ModelViewSet):
     def list(self, request):
         queryset = self.queryset.filter().order_by('-id')
         serializer = AlbumDetailSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = self.queryset.filter().order_by('-id')
+        album = get_object_or_404(queryset, pk=pk)
+        serializer = AlbumDetailSerializer(album)
         return Response(serializer.data)

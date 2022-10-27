@@ -8,7 +8,7 @@ class Track(models.Model):
     """Object Album."""
 
     title = models.CharField(_('title'), max_length=250)
-    duration = models.DurationField(_("duration"), blank=True, default=timedelta(seconds=0))
+    duration = models.IntegerField(_("duration"), blank=True, default=0, help_text=_("works in seconds")) # seconds
     url_track = models.URLField(_("url track"), max_length=250,)
     album = models.ForeignKey(
         Album, verbose_name=_("artist"),
@@ -25,8 +25,15 @@ class Track(models.Model):
 
     def __str__(self):
         """Unicode representation of Track."""
-        pass
+        return self.title
 
-    # def save(self):
-    #     """Save method for Track."""
-    #     pass
+    def save(self, *args, **kwargs):
+        super(Track, self).save(*args, **kwargs)
+        tracks = Track.objects.filter(album=self.album)
+        secons_all = 0
+        for track in tracks:
+            secons_all += track.duration
+        self.album.duration = secons_all
+        self.album.save()
+
+
