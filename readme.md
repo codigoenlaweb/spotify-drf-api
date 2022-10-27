@@ -1,6 +1,6 @@
 <h1 align="center">spotify drf clone</h1>
 
-![View project](https://github.com/codigoenlaweb/rickandmorthy-js/blob/master/src/assets/images/imgreadme1.jpeg)
+![View project](https://github.com/codigoenlaweb/spotify-drf-api/blob/main/static/img/photo1666853075.jpeg)
 
 <h4 align="center">Create an application that helps to obtain a list of albums, songs and their artists (Spotify clone).</h4>
 <div align="center">
